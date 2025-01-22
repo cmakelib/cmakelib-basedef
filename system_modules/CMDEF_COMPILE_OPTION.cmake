@@ -23,7 +23,7 @@ INCLUDE(${CMAKE_CURRENT_LIST_DIR}/CMDEF_ADD_LIBRARY.cmake)
 # from BUILD_TYPE list.
 #
 # LANG - array, If specified must be on CMDEF_SUPPORTED_LANG_LIST.
-# If not specified no exact languege is select
+# If not specified no exact language is select
 #
 # Each definition is passed to ADD_COMPILE_OPTIONS
 # by generator_expression $<<CONFIG:build_type>:${option}>
@@ -79,20 +79,20 @@ ENDMACRO()
 # to each BUILD_TYPE
 #
 # LANG - array, if specified must be one of CMDEF_SUPPORTED_LANG_LIST.
-# If not specified no exact languege is select
+# If not specified no exact language is select
 #
 # Each definition is passed to ADD_COMPILE_OPTIONS
 # by generator_expression $<<CONFIG:build_type>:${option}>
 #
-# VISIBLITY is passed to visiblity section of TARGET_LINK_OPTIONS.
-# If no visiblity specified than visiblity is omitted
+# VISIBILITY is passed to visibility section of TARGET_LINK_OPTIONS.
+# If no visibility specified than visibility is omitted
 #
 # <function> (
 #		TARGET <target>
 #		[LANG <lang_list>]
 #		[ALL <compile_options>]
 #		[<BUILD_TYPE_UPPERCASE> <link_options>]{1,}
-#		[VISIBLITY <INTERFACE|PUBLIC|PRIVATE>]
+#		[VISIBILITY <INTERFACE|PUBLIC|PRIVATE>]
 # )
 #
 FUNCTION(CMDEF_COMPILE_OPTIONS_TARGET)
@@ -102,10 +102,10 @@ FUNCTION(CMDEF_COMPILE_OPTIONS_TARGET)
 			${CMDEF_BUILD_TYPE_LIST_UPPERCASE}
 		ONE_VALUE
 			TARGET
-			VISIBLITY
+			VISIBILITY
 		REQUIRED
 			TARGET
-			VISIBLITY
+			VISIBILITY
 		P_ARGN ${ARGN}
 	)
 
@@ -128,9 +128,9 @@ FUNCTION(CMDEF_COMPILE_OPTIONS_TARGET)
 			SET(option ${${build_type_var}})
 			SET(condition $<AND:$<COMPILE_LANGUAGE:${__LANG}>,$<CONFIG:${build_type}>>)
 			SET(compile_options $<${condition}:${option}>)
-			TARGET_COMPILE_OPTIONS(${original_target_name} ${__VISIBLITY} ${compile_options})
+			TARGET_COMPILE_OPTIONS(${original_target_name} ${__VISIBILITY} ${compile_options})
 		ELSE()
-			TARGET_COMPILE_OPTIONS(${original_target_name} ${__VISIBLITY} $<$<CONFIG:${build_type}>:${${build_type_var}}>)
+			TARGET_COMPILE_OPTIONS(${original_target_name} ${__VISIBILITY} $<$<CONFIG:${build_type}>:${${build_type_var}}>)
 		ENDIF()
 	ENDFOREACH()
 ENDFUNCTION()

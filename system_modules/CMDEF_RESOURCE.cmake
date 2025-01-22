@@ -1,6 +1,6 @@
 ## Main
 #
-# Manage resources for binaries. Specialy for Windows.
+# Manage resources for binaries. Specially for Windows.
 #
 
 INCLUDE_GUARD(GLOBAL)
@@ -17,7 +17,7 @@ FIND_PACKAGE(CMLIB REQUIRED)
 # RESOURCE_FILE is absolute path to Resource file
 #
 # DEFINITIONS is list of key-value pairs which is treated as
-# definitons for cmd line command which process RESOURCE_FILE
+# definitions for cmd line command which process RESOURCE_FILE
 #
 # <function> (
 #		RESOURCE_TARGET <resource_target>

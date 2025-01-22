@@ -21,7 +21,7 @@ INCLUDE(${CMAKE_CURRENT_LIST_DIR}/CMDEF_ADD_LIBRARY.cmake)
 # to each BUILD_TYPE
 #
 # LANG - array, if specified must be one of CMDEF_SUPPORTED_LANG_LIST.
-# If not specified no exact languege is select
+# If not specified no exact language is select
 #
 # Each definition is passed to ADD_LINK_OPTIONS
 # by generator_expression $<<CONFIG:build_type>:${option}>
@@ -78,20 +78,20 @@ ENDFUNCTION()
 # to each BUILD_TYPE
 #
 # LANG - array, if specified must be one of CMDEF_SUPPORTED_LANG_LIST.
-# If not specified no exact languege is select
+# If not specified no exact language is select
 #
 # Each definition is passed to ADD_LINK_OPTIONS
 # by generator_expression $<<CONFIG:build_type>:${option}>
 #
-# VISIBLITY is passed to visiblity section of TARGET_LINK_OPTIONS.
-# If no visiblity specified than visiblity is omitted
+# VISIBILITY is passed to visibility section of TARGET_LINK_OPTIONS.
+# If no visibility specified than visibility is omitted
 #
 # <function>(
 #		TARGET <target>
 #		[LANG <lang> M]
 #		[ALL <compile_options>]
 #		[<BUILD_TYPE_UPPERCASE> <link_options>]{1,}
-#		[VISIBLITY <INTERFACE|PUBLIC|PRIVATE>]
+#		[VISIBILITY <INTERFACE|PUBLIC|PRIVATE>]
 # )
 #
 FUNCTION(CMDEF_LINK_OPTIONS_TARGET)
@@ -101,7 +101,7 @@ FUNCTION(CMDEF_LINK_OPTIONS_TARGET)
 			${CMDEF_BUILD_TYPE_LIST_UPPERCASE}
 		ONE_VALUE
 			TARGET
-			VISIBLITY
+			VISIBILITY
 		REQUIRED
 			TARGET 
 		P_ARGN ${ARGN}
@@ -126,9 +126,9 @@ FUNCTION(CMDEF_LINK_OPTIONS_TARGET)
 			SET(option ${${build_type_var}})
 			SET(condition $<AND:$<COMPILE_LANGUAGE:${__LANG}>,$<CONFIG:${build_type}>>)
 			SET(link_options $<${condition}:${option}>)
-			TARGET_LINK_OPTIONS(${original_target_name} ${__VISIBLITY} ${link_options})
+			TARGET_LINK_OPTIONS(${original_target_name} ${__VISIBILITY} ${link_options})
 		ELSE()
-			TARGET_LINK_OPTIONS(${original_target_name} ${__VISIBLITY} $<$<CONFIG:${build_type}>:${${build_type_var}}>)
+			TARGET_LINK_OPTIONS(${original_target_name} ${__VISIBILITY} $<$<CONFIG:${build_type}>:${${build_type_var}}>)
 		ENDIF()
 	ENDFOREACH()
 ENDFUNCTION()

@@ -14,6 +14,7 @@ PROJECT(${CMAKE_PROJECT_NAME})
 FIND_PACKAGE(CMLIB COMPONENTS CMDEF)
 
 
+CMDEF_CLEANUP()
 
 #
 # Add Definitions for each build type globally
@@ -36,7 +37,7 @@ IF(CMDEF_OS_LINUX)
 	)
 ELSEIF(CMDEF_OS_WINDOWS)
 	CMDEF_COMPILE_OPTIONS(
-		ALL /wd4996 # Disable deprectation warning on Windows OS
+		ALL /wd4996 # Disable deprecation warning on Windows OS
 	)
 ENDIF()
 
@@ -53,7 +54,7 @@ CMDEF_ADD_EXECUTABLE(
 
 CMDEF_COMPILE_DEFINITIONS_TARGET(
 	TARGET executable
-	VISIBLITY PUBLIC
+	VISIBILITY PUBLIC
 	ALL RETURN_CODE=245
 	DEBUG RETURN_CODE_DEBUG=1000
 	RELEASE RETURN_CODE_RELEASE=2020
@@ -66,7 +67,7 @@ CMDEF_COMPILE_DEFINITIONS_TARGET(
 ADD_EXECUTABLE(cmake_executable main.c)
 CMDEF_COMPILE_DEFINITIONS_TARGET(
 	TARGET cmake_executable
-	VISIBLITY PRIVATE
+	VISIBILITY PRIVATE
 	ALL RETURN_CODE=255
 	DEBUG RETURN_CODE_DEBUG=10000
 	RELEASE RETURN_CODE_RELEASE=20200
@@ -94,3 +95,12 @@ CMDEF_PACKAGE(
 #
 SET(CPACK_GENERATOR ZIP)
 INCLUDE(CPack)
+
+function(dump_cmake_variables)
+    get_cmake_property(_variableNames VARIABLES)
+    list (SORT _variableNames)
+    foreach (_variableName IN LISTS _variableNames)
+            message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+endfunction()
+dump_cmake_variables()

@@ -31,10 +31,10 @@ It tries to set the variable in the following order
 
 ## CMDEF_BUILD_TYPE_CMAKE_BUILD_TYPE_OVERRIDE:BOOL=\<conditional>
 
-Indicate if the CMAKE_BUILD_TYPE is overriden by CMDEF library.
+Indicate if the CMAKE_BUILD_TYPE is overridden by CMDEF library.
 
 - If the CMAKE_BUILD_TYPE is not set the CMDEF try to set the CMAKE_BUILD_TYPE variable
-  to the predefined value stored in CMDEF_BUILD_TYPE_DEFAULT variable. In this case the vairable is set to ON.
+  to the predefined value stored in CMDEF_BUILD_TYPE_DEFAULT variable. In this case the variable is set to ON.
 - If the CMAKE_BUILD_TYPE is set explicitly the variable is set to OFF.
 
 ## CMDEF_BUILD_TYPE_DEFAULT:STRING=Debug
@@ -43,7 +43,7 @@ Default build type if CMAKE_BUILD_TYPE is not specified.
 
 ## CMDEF_BUILD_TYPE_LIST:STRING,LIST=\<conditional>
 
-List of the suported byuld types. CMAKE_BUILD_TYPE must hold exactly one value from this list.
+List of the supported byuld types. CMAKE_BUILD_TYPE must hold exactly one value from this list.
 
 Type: String, List
 

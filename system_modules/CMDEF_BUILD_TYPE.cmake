@@ -28,7 +28,7 @@ SET(CMDEF_BUILD_TYPE_DEFAULT "Debug"
 MACRO(_CMDEF_BUILD_TYPE_SET_CMAKE_BUILD_TYPE_OVERRIDE opt ${ARGN})
 	SET(CMDEF_BUILD_TYPE_CMAKE_BUILD_TYPE_OVERRIDE ${opt}
 		CACHE BOOL
-		"ON if the CMAKE_BUILD_TYPE is overriden by CMDEF, OFF otherwise"
+		"ON if the CMAKE_BUILD_TYPE is overridden by CMDEF, OFF otherwise"
 		${ARGN}
 	)
 ENDMACRO()
@@ -65,7 +65,7 @@ UNSET(all_find)
 
 
 ##
-# Initialize CMake veriables according to CMDEF definitions
+# Initialize CMake variables according to CMDEF definitions
 #
 # <function>(
 # )
